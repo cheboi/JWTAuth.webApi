@@ -1,7 +1,14 @@
+using JWTAuth.webApi.Interface;
+using JWTAuth.webApi.Models;
+using JWTAuth.webApi.Repository;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddDbContext<DatabaseContext>
+    (options => options.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection")));
+builder.Services.AddTransient<IEmployees, EmployeeRepository>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
