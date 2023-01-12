@@ -78,7 +78,7 @@ namespace JWTAuth.webApi.Repository
                 }
                 else
                 {
-                    throw new ArgumentNullException
+                    throw new ArgumentNullException();
                 }
             }
             catch 
